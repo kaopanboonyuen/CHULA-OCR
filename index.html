@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<!-- Emoji Tab Title (Browser Tab Icon Text Style) -->
+<title>CHULA-OCR | Robust Document AI</title>
+
+<!-- Optional: better mobile display -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+<text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+
+<style>
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    background: #ffffff;
+    color: #111;
+}
+
+.hero {
+    padding: 80px 20px 40px 20px;
+    text-align: center;
+    background: linear-gradient(120deg, #f5f7fa, #ffffff);
+    border-bottom: 1px solid #eee;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero h2 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #444;
+}
+
+.hero .author {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.links a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #2a5bd7;
+}
+
+.section {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.section h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.badge {
+    display: inline-block;
+    background: #eef3ff;
+    color: #2a5bd7;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin: 5px;
+}
+
+.figure {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.figure img {
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.card {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+}
+
+.footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 13px;
+    color: #888;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>CHULA-OCR</h1>
+    <h2>Uncertainty-Aware Robust OCR for National-Scale Thai Land Title Deed Digitization</h2>
+
+    <div class="author">
+        Teerapong Panboonyuen · Chulalongkorn University
+    </div>
+
+    <div class="links">
+        <a href="https://kaopanboonyuen.github.io/CHULA-OCR/">📄 Paper</a>
+        <a href="https://github.com/kaopanboonyuen/CHULA-OCR">💻 Code</a>
+        <a href="https://kaopanboonyuen.github.io/CHULA-OCR/">📊 Dataset</a>
+        <a href="https://kaopanboonyuen.github.io/CHULA-OCR/">🌐 Project Page</a>
+    </div>
+</div>
+
+<!-- BADGES -->
+<div class="section" style="text-align:center;">
+    <span class="badge">NeurIPS-Style Robust OCR</span>
+    <span class="badge">Thai Land Title Deeds</span>
+    <span class="badge">Uncertainty-Aware Learning</span>
+    <span class="badge">Government-Scale Deployment</span>
+</div>
+
+<!-- MOTIVATION -->
+<div class="section">
+    <h2>🏛️ Motivation</h2>
+    <p>
+        OCR in real-world legal documents remains extremely challenging due to severe degradation,
+        handwriting overlays, stamps, and complex cadastral layouts.
+    </p>
+
+    <p>
+        In Thai land title deed digitization, even small OCR errors can lead to critical legal inconsistencies.
+        CHULA-OCR is designed to address this gap by introducing <b>uncertainty-aware perception</b>.
+    </p>
+</div>
+
+
+<!-- FIGURE -->
+<div class="section">
+    <h2>📊 Overview</h2>
+
+    <div style="text-align: center;">
+        <img src="img/chula_ocr_story_figure.png"
+             alt="CHULA-OCR Overview"
+             style="max-width: 95%; height: auto; display: inline-block;">
+    </div>
+</div>
+
+
+
+<!-- METHOD -->
+<div class="section">
+    <h2>🧠 Key Idea</h2>
+    <p>
+        Instead of treating OCR as deterministic prediction, CHULA-OCR models <b>uncertainty explicitly</b>.
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Uncertainty Estimation</h3>
+            <p>Detects unreliable visual regions in degraded documents</p>
+        </div>
+
+        <div class="card">
+            <h3>Feature Gating</h3>
+            <p>Suppresses noisy stamps, blur, and handwriting artifacts</p>
+        </div>
+
+        <div class="card">
+            <h3>Structured Decoding</h3>
+            <p>Maintains cadastral format consistency for legal use</p>
+        </div>
+    </div>
+</div>
+
+<!-- RESULTS -->
+<div class="section">
+    <h2>📈 Key Results</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>+64.2%</h3>
+            <p>Overall OCR Accuracy</p>
+        </div>
+
+        <div class="card">
+            <h3>+58.2%</h3>
+            <p>Cadastral Identifier Match</p>
+        </div>
+
+        <div class="card">
+            <h3>-1.64 NED</h3>
+            <p>Lowest Error Rate</p>
+        </div>
+    </div>
+</div>
+
+<!-- IMPACT -->
+<div class="section">
+    <h2>🌍 Real-World Impact</h2>
+    <p>
+        CHULA-OCR enables scalable digitization of Thai land title deeds, supporting:
+    </p>
+
+    <ul>
+        <li>National land registry automation</li>
+        <li>Legal document verification systems</li>
+        <li>Reduction of manual administrative workload</li>
+        <li>AI-driven government infrastructure</li>
+    </ul>
+</div>
+
+<!-- CONCLUSION -->
+<div class="section">
+    <h2>🚀 Takeaway</h2>
+    <p>
+        CHULA-OCR demonstrates that robust OCR for legal documents requires more than stronger models—
+        it requires <b>uncertainty-aware perception grounded in real-world constraints</b>.
+    </p>
+</div>
+
+<div class="footer">
+    © CHULA AI Research Lab · Kao Panboonyuen · 2026
+</div>
+
+</body>
+</html>
