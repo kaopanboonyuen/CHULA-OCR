@@ -1,0 +1,67 @@
+# CHULA-OCR Base Configuration
+# Author: Teerapong Panboonyuen (Kao), Ph.D.
+# C2F Postdoctoral Fellow, Chulalongkorn University
+
+# ── Model Architecture ────────────────────────────────────────────────────
+model:
+  img_size: 224
+  patch_size: 16
+  embed_dim: 768
+  num_encoder_scales: 3
+  num_decoder_layers: 6
+  num_heads: 8
+  ff_dim: 2048
+  max_seq_len: 256
+  dropout: 0.1
+  vocab_size: 200  # Thai chars + digits + special
+
+# ── Loss ─────────────────────────────────────────────────────────────────
+loss:
+  lambda_u: 0.5          # uncertainty regularization weight
+  lambda_h: 0.3          # heuristic consistency weight
+  alpha_entropy: 2.0     # entropy weighting sensitivity
+
+# ── Training ─────────────────────────────────────────────────────────────
+training:
+  epochs: 50
+  batch_size: 64         # per GPU; effective = 64 × 8 GPUs = 512
+  seed: 42
+  num_workers: 8
+  mixed_precision: true
+
+# ── Optimizer ────────────────────────────────────────────────────────────
+optimizer:
+  name: adamw
+  lr: 1.0e-4
+  weight_decay: 0.01
+  betas: [0.9, 0.999]
+  grad_clip: 1.0
+
+# ── LR Schedule ──────────────────────────────────────────────────────────
+scheduler:
+  name: cosine_with_warmup
+  warmup_ratio: 0.1
+  eta_min: 1.0e-6
+
+# ── Early Stopping ────────────────────────────────────────────────────────
+early_stopping:
+  patience: 10
+  monitor: val_acc
+  mode: max
+
+# ── Data Augmentation ────────────────────────────────────────────────────
+augmentation:
+  enabled: true
+  prob: 0.5
+  rotation_deg: 5.0
+  gaussian_blur_sigma: [0.1, 2.0]
+  noise_std: 0.03
+  elastic_alpha: 34.0
+  elastic_sigma: 4.0
+  cutout_ratio: 0.1
+
+# ── Hardware ─────────────────────────────────────────────────────────────
+hardware:
+  gpus: 8                # 8× NVIDIA A100 80GB
+  precision: fp16
+  # Intel Xeon Platinum 8275L × 96 vCPUs, 1152 GiB RAM
