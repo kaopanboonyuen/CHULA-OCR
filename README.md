@@ -60,18 +60,6 @@ We introduce:
 - 🔹 Feature gating for noisy regions  
 - 🔹 Structure-aware decoding for legal documents  
 
-### Objective
-
-\[
-\mathcal{L} = \mathcal{L}_{CE} + \lambda_u \mathcal{L}_{uncertainty} + \lambda_h \mathcal{L}_{structure}
-\]
-
-This allows CHULA-OCR to:
-
-- Focus on reliable strokes  
-- Suppress noisy stamps/background artifacts  
-- Maintain structural consistency in cadastral codes  
-
 ---
 
 ## 🏗️ Architecture Overview
