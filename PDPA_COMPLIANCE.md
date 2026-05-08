@@ -100,19 +100,6 @@ Although the dataset is fully anonymized and no individual can be re-identified 
 
 ---
 
-### 9. Contact for Privacy Concerns
-
-For any privacy-related questions regarding this research:
-
-**Research Team Contact:**
-> Teerapong Panboonyuen (Kao), Ph.D.
-> C2F Postdoctoral Fellow, Chulalongkorn University
-> teerapong.panboonyuen@gmail.com
-
----
-
----
-
 ## ประกาศภาษาไทย (Thai Language Declaration)
 
 ### ภาพรวม
