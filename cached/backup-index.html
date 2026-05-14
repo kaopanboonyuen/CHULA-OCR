@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>CHULA-OCR | RESEARCH 2026</title>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+:root{
+    --bg:#060816;
+    --bg2:#0c1224;
+    --card:rgba(255,255,255,0.06);
+    --border:rgba(255,255,255,0.12);
+    --text:#ffffff;
+    --muted:#a7b0c3;
+    --accent:#7c5cff;
+    --accent2:#00d4ff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:
+        radial-gradient(circle at top left,#16213f 0%,#060816 45%),
+        radial-gradient(circle at bottom right,#101935 0%,#060816 40%);
+    color:var(--text);
+    overflow-x:hidden;
+    line-height:1.7;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+
+    backdrop-filter:blur(16px);
+    background:rgba(6,8,22,0.65);
+
+    border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.nav-container{
+    max-width:1300px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 24px;
+}
+
+.logo{
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:-0.5px;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--muted);
+    transition:0.3s;
+    font-size:15px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:120px 20px 80px;
+}
+
+.hero-content{
+    max-width:1200px;
+}
+
+.conference-badge{
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(124,92,255,0.12);
+
+    border:1px solid rgba(124,92,255,0.35);
+
+    color:#cbbdff;
+
+    font-weight:600;
+
+    margin-bottom:32px;
+}
+
+.hero h1{
+    font-size:110px;
+    line-height:1;
+    letter-spacing:-5px;
+    font-weight:900;
+
+    margin-bottom:28px;
+}
+
+.hero-subtitle{
+    font-size:28px;
+    color:var(--muted);
+
+    max-width:950px;
+    margin:auto;
+
+    line-height:1.5;
+}
+
+.hero-authors{
+    margin-top:28px;
+    font-size:18px;
+    color:#d7def0;
+}
+
+.hero-buttons{
+    margin-top:42px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
+.hero-buttons a{
+    text-decoration:none;
+    color:white;
+
+    padding:16px 26px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.3s ease;
+
+    font-weight:600;
+}
+
+.hero-buttons a:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,0.12);
+}
+
+/* =========================
+   HERO METRICS
+========================= */
+
+.hero-metrics{
+    margin-top:70px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.metric-card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:34px;
+
+    backdrop-filter:blur(16px);
+
+    transition:0.3s ease;
+}
+
+.metric-card:hover{
+    transform:translateY(-8px);
+}
+
+.metric-card h2{
+    font-size:52px;
+    margin-bottom:10px;
+    font-weight:800;
+
+    background:linear-gradient(90deg,#ffffff,#8cb7ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.metric-card p{
+    color:var(--muted);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    max-width:1250px;
+    margin:auto;
+    padding:120px 24px;
+}
+
+.section-header{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-header h2{
+    font-size:56px;
+    letter-spacing:-2px;
+    margin-bottom:18px;
+}
+
+.section-header p{
+    color:var(--muted);
+    font-size:20px;
+}
+
+/* =========================
+   STORY BLOCK
+========================= */
+
+.story-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.story-text h3{
+    font-size:42px;
+    margin-bottom:24px;
+    line-height:1.15;
+}
+
+.story-text p{
+    color:var(--muted);
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+.story-image img{
+    width:100%;
+    border-radius:28px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.45);
+
+    transition:0.4s ease;
+}
+
+.story-image img:hover{
+    transform:scale(1.02);
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+}
+
+.card{
+    padding:34px;
+
+    background:var(--card);
+
+    border-radius:24px;
+
+    border:1px solid var(--border);
+
+    transition:0.3s ease;
+
+    backdrop-filter:blur(18px);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(124,92,255,0.5);
+}
+
+.card h3{
+    font-size:26px;
+    margin-bottom:16px;
+}
+
+.card p{
+    color:var(--muted);
+}
+
+/* =========================
+   BENCHMARK TABLE
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+
+    background:rgba(255,255,255,0.04);
+
+    border-radius:24px;
+    overflow:hidden;
+}
+
+th{
+    background:rgba(255,255,255,0.06);
+
+    padding:24px;
+    text-align:left;
+
+    font-size:16px;
+}
+
+td{
+    padding:24px;
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
+tr:hover{
+    background:rgba(255,255,255,0.03);
+}
+
+.ours{
+    background:rgba(124,92,255,0.14);
+    font-weight:700;
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-container{
+    margin-top:50px;
+}
+
+video{
+    width:100%;
+    border-radius:28px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.5);
+}
+
+/* =========================
+   IMPACT
+========================= */
+
+.impact-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.impact-item{
+    padding:30px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+}
+
+.impact-item h4{
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+/* =========================
+   CITATION
+========================= */
+
+pre{
+    background:#0d1327;
+
+    padding:32px;
+
+    border-radius:22px;
+
+    overflow:auto;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#d6e2ff;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    padding:60px 20px;
+
+    color:var(--muted);
+
+    border-top:1px solid rgba(255,255,255,0.06);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .hero h1{
+        font-size:72px;
+    }
+
+    .story-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .hero-metrics{
+        grid-template-columns:1fr;
+    }
+
+    .impact-list{
+        grid-template-columns:1fr;
+    }
+
+    .section-header h2{
+        font-size:42px;
+    }
+}
+
+@media(max-width:700px){
+
+    .hero h1{
+        font-size:52px;
+        letter-spacing:-2px;
+    }
+
+    .hero-subtitle{
+        font-size:20px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .section{
+        padding:90px 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+    <div class="nav-container">
+
+        <div class="logo">
+            CHULA-OCR
+        </div>
+
+        <div class="nav-links">
+            <a href="#overview">Overview</a>
+            <a href="#method">Method</a>
+            <a href="#results">Results</a>
+            <a href="#impact">Impact</a>
+            <a href="#citation">Citation</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="conference-badge">
+            Research Paper · Under Review
+        </div>
+
+        <h1>CHULA-OCR</h1>
+
+        <p class="hero-subtitle">
+            Uncertainty-Aware Robust OCR for National-Scale
+            Thai Land Title Deed Digitization
+        </p>
+
+        <p class="hero-authors">
+            Teerapong Panboonyuen · Chulalongkorn University
+        </p>
+
+        <div class="hero-buttons">
+            <a href="https://ieeexplore.ieee.org/document/11146788/">📄 Paper</a>
+            <a href="https://github.com/kaopanboonyuen/CHULA-OCR">💻 Code</a>
+            <a href="https://github.com/kaopanboonyuen/CHULA-OCR">📊 Dataset</a>
+            <a href="https://github.com/kaopanboonyuen/CHULA-OCR">🎥 Demo</a>
+        </div>
+
+        <div class="hero-metrics">
+
+            <div class="metric-card">
+                <h2>64.2%</h2>
+                <p>OCR Accuracy Improvement</p>
+            </div>
+
+            <div class="metric-card">
+                <h2>58.2%</h2>
+                <p>Cadastral Match Gain</p>
+            </div>
+
+            <div class="metric-card">
+                <h2>1.64</h2>
+                <p>Lowest Normalized Edit Distance</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     OVERVIEW
+========================= -->
+
+<section class="section" id="overview">
+
+    <div class="section-header">
+        <h2>Research Motivation</h2>
+        <p>
+            OCR for legal cadastral documents remains extremely challenging
+            under severe real-world degradation.
+        </p>
+    </div>
+
+    <div class="story-grid">
+
+        <div class="story-text">
+
+            <h3>
+                Real-world land title deeds are noisy, degraded, and legally sensitive.
+            </h3>
+
+            <p>
+                Existing OCR systems fail under handwriting overlays,
+                faded scans, official stamps, blur, and layout corruption.
+            </p>
+
+            <p>
+                Even minor recognition errors can produce critical legal inconsistencies
+                in national-scale document digitization systems.
+            </p>
+
+            <p>
+                CHULA-OCR introduces uncertainty-aware perception
+                for robust document intelligence under real operational constraints.
+            </p>
+
+        </div>
+
+        <div class="story-image">
+            <img src="img/chula_ocr_story_figure.png" alt="Overview Figure">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     METHOD
+========================= -->
+
+<section class="section" id="method">
+
+    <div class="section-header">
+        <h2>Core Methodology</h2>
+        <p>
+            Robust OCR through uncertainty-aware structured perception.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Uncertainty Estimation</h3>
+
+            <p>
+                Detect unreliable visual regions under severe degradation,
+                handwriting contamination, and scanning artifacts.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Feature Gating</h3>
+
+            <p>
+                Suppress noisy document patterns including blur,
+                occlusion, official stamps, and structural corruption.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Structured Decoding</h3>
+
+            <p>
+                Preserve cadastral formatting consistency
+                for reliable downstream legal verification.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     RESULTS
+========================= -->
+
+<section class="section" id="results">
+
+    <div class="section-header">
+        <h2>Benchmark Results</h2>
+
+        <p>
+            CHULA-OCR consistently outperforms existing OCR baselines
+            across challenging cadastral document benchmarks.
+        </p>
+    </div>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+                <th>Method</th>
+                <th>OCR Accuracy ↑</th>
+                <th>NED ↓</th>
+                <th>Cadastral Match ↑</th>
+            </tr>
+
+            <tr>
+                <td>CRNN</td>
+                <td>61.3</td>
+                <td>5.42</td>
+                <td>48.1</td>
+            </tr>
+
+            <tr>
+                <td>TrOCR</td>
+                <td>71.4</td>
+                <td>4.82</td>
+                <td>57.2</td>
+            </tr>
+
+            <tr>
+                <td>PARSeq</td>
+                <td>74.1</td>
+                <td>3.94</td>
+                <td>63.5</td>
+            </tr>
+
+            <tr class="ours">
+                <td>CHULA-OCR (Ours)</td>
+                <td>92.6</td>
+                <td>1.64</td>
+                <td>91.7</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     VIDEO
+========================= -->
+
+<section class="section">
+
+    <div class="section-header">
+        <h2>System Demonstration</h2>
+
+        <p>
+            Real-world OCR inference under severe cadastral degradation.
+        </p>
+    </div>
+
+    <div class="video-container">
+
+        <video autoplay muted loop playsinline controls>
+            <source src="demo.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     IMPACT
+========================= -->
+
+<section class="section" id="impact">
+
+    <div class="section-header">
+        <h2>Real-World Impact</h2>
+
+        <p>
+            Designed for national-scale public infrastructure deployment.
+        </p>
+    </div>
+
+    <div class="impact-list">
+
+        <div class="impact-item">
+            <h4>🏛 National Land Registry</h4>
+
+            <p>
+                Enable scalable cadastral digitization for
+                government administrative systems.
+            </p>
+        </div>
+
+        <div class="impact-item">
+            <h4>⚖ Legal Verification</h4>
+
+            <p>
+                Improve reliability and consistency
+                in official legal document processing.
+            </p>
+        </div>
+
+        <div class="impact-item">
+            <h4>📑 Administrative Automation</h4>
+
+            <p>
+                Reduce manual workload in large-scale
+                document archival pipelines.
+            </p>
+        </div>
+
+        <div class="impact-item">
+            <h4>🌏 Public AI Infrastructure</h4>
+
+            <p>
+                Support AI-driven transformation
+                for governmental digital services.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     TAKEAWAY
+========================= -->
+
+<section class="section">
+
+    <div class="section-header">
+        <h2>Takeaway</h2>
+
+        <p style="max-width:900px;margin:auto;">
+            CHULA-OCR demonstrates that robust OCR for legally sensitive
+            real-world documents requires more than stronger recognition models —
+            it requires uncertainty-aware perception grounded in operational constraints.
+        </p>
+    </div>
+
+</section>
+
+<!-- =========================
+     CITATION
+========================= -->
+
+<section class="section" id="citation">
+
+    <div class="section-header">
+        <h2>BibTeX</h2>
+
+        <p>
+            Cite our work if you find it useful for your research.
+        </p>
+    </div>
+
+<pre>
+@article{panboonyuen2026chulaocr,
+  title={CHULA-OCR: Uncertainty-Aware Robust OCR for National-Scale Thai Land Title Deed Digitization},
+  author={Panboonyuen, Teerapong},
+  year={2026}
+}
+</pre>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<div class="footer">
+    © 2026 CHULA AI Research Lab · Kao Panboonyuen
+</div>
+
+</body>
+</html>
