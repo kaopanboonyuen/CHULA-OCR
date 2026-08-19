@@ -1,4 +1,4 @@
-# CHULA-OCR: Uncertainty-Aware Robust OCR for National-Scale Thai Land Title Deed Digitization
+# CHULA-OCR: Uncertainty-Aware Robust OCR for Digitizing Land Title Deeds
 
 > **CHULA-OCR** is a robustness-first OCR framework designed for real-world, highly degraded legal documents—specifically Thai land title deeds—where traditional OCR systems fail due to noise, handwriting, stamps, and character ambiguity.
 
@@ -22,7 +22,7 @@ In high-stakes legal settings such as **land ownership verification**, even smal
 
 ---
 
-## 🇹🇭 National-Scale Motivation
+## 🇹🇭 Motivation
 
 This project is motivated by real deployment needs from Thailand’s land administration system.
 
@@ -188,7 +188,7 @@ It bridges the gap between:
 - Academic OCR benchmarks  
 - Real-world government document systems  
 
-and provides a **deployable solution for Thai land title deed digitization at national scale**.
+and provides a **deployable solution for Thai land title deed digitization**.
 
 ---
 
@@ -198,7 +198,7 @@ If you use this work, please cite:
 
 ```bibtex
 @article{chula_ocr_2026,
-  title={CHULA-OCR: Uncertainty-Aware Robust Text Recognition for National-Scale Land Title Deed Digitization},
+  title={CHULA-OCR: Uncertainty-Aware Robust OCR for Digitizing Land Title Deeds},
   author={Panboonyuen, Teerapong},
   year={2026}
 }
